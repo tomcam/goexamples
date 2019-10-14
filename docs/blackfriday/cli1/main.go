@@ -19,11 +19,14 @@ import (
 // Given the name of an input Markdown file and the name of
 // an output HTML file, generate HTML from the input file
 // and create the HTML file. Does not check to see if an existing
-// HTML file exists. title gets passed as the title tag,
-// and css is a placeholder that doesn't get used in this
+// HTML file exists. options are things like HTML_SKIP_STYLE (to
+// skip embedded style elements, and can be found here:
+// https://github.com/russross/blackfriday/blob/master/html.go
+// title gets converted to the title tag,
+// css is a placeholder that doesn't get used in this
 // program.
 //
-func generateHTML(infile string, outfile string, title string, css string) (err error) {
+func generateHTML(infile string, outfile string, options int, title string, css string) (err error) {
 	var input []byte
 	// Read the markdown file into a byte slice.
 	if input, err = ioutil.ReadFile(infile); err != nil {
@@ -32,7 +35,7 @@ func generateHTML(infile string, outfile string, title string, css string) (err 
 	// Create an object to do the rendering.
 	// Pass it the contents of a title tag, and CSS
 	// (which in this case isn't used)
-	renderer := blackfriday.HtmlRenderer(blackfriday.HTML_COMPLETE_PAGE,
+	renderer := blackfriday.HtmlRenderer(options,
 		title, css)
 
 	// Read the markdown file from the byte slice named
@@ -64,7 +67,7 @@ func main() {
 			"Please specify 2 filenames: the first is a markdown file, the second is an HTML output file.")
 		os.Exit(-1)
 	}
-	if err := generateHTML(os.Args[1], os.Args[2], "Markdown!", ""); err != nil {
+	if err := generateHTML(os.Args[1], os.Args[2], blackfriday.HTML_COMPLETE_PAGE, "Markdown!", ""); err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err.Error())
 	}
 }
