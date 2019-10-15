@@ -1,9 +1,12 @@
 // cli2 - Minimal command-line Black Friday program
 // Example front-end for command-line use.
 // Give it a
-// markdown file and the name of an output HTML file,
+// markdown file, the optional name of an output HTML file,
+// the optional name of a style sheet file,
 // and it generates that HTML file from the markup.
-// Like cli1 but adds style sheet support
+// Like cli1 but adds style sheet support,
+// automatic generation of output filename based on
+// HTML input filename, support for the most common Markdown extensions.
 // Example:
 //  ./cli2 test1.md foo.html styles1.css
 //
@@ -15,19 +18,21 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
+	"flag"
 )
 
 // Given the name of an input Markdown file and the name of
 // an output HTML file, generate HTML from the input file
 // and create the HTML file. Does not check to see if an existing
-// HTML file exists. options are things like HTML_SKIP_STYLE (to
+// HTML file exists. extensions are things like HTML_SKIP_STYLE (to
 // skip embedded style elements, and can be found here:
 // https://github.com/russross/blackfriday/blob/master/html.go
 // title gets converted to the title tag,
 // css is a placeholder that doesn't get used in this
 // program.
 //
-func generateHTML(infile string, outfile string, options int, title string, css string) (err error) {
+func generateHTML(infile string, outfile string, extensions int, title string, css string) (err error) {
 	var input []byte
 	// Read the markdown file into a byte slice.
 	if input, err = ioutil.ReadFile(infile); err != nil {
@@ -36,7 +41,7 @@ func generateHTML(infile string, outfile string, options int, title string, css 
 	// Create an object to do the rendering.
 	// Pass it the contents of a title tag, and CSS
 	// (which in this case isn't used)
-	renderer := blackfriday.HtmlRenderer(options,
+	renderer := blackfriday.HtmlRenderer(extensions,
 		title, css)
 
 	// Read the markdown file from the byte slice named
@@ -63,23 +68,66 @@ func generateHTML(infile string, outfile string, options int, title string, css 
 }
 
 func main() {
-	if len(os.Args) < 3 {
+	if len(os.Args) < 2 {
 		fmt.Fprintln(os.Stderr,
-			"Please specify at 2 filenames: the first is a markdown file, the second is an HTML output file. A style sheet is optional.")
+			"Please specify at least a markdown filename")
 		os.Exit(-1)
 	}
 
+	// HTML file
+	var outfile string
+
+	// Markdown input file
+	var infile string
+
 	// For optional style sheet
-	var cssfilename string
+	var cssfile string
+
+	// If true, generate a table of contents
+	toc := flag.Bool("toc", false, "-toc=true to generate table of contents")
+
+	// Parse command-line flags
+	flag.Parse()
+	fmt.Fprintf(os.Stdout, "toc: %v\n", *toc)
+
 	// Loop through command line arguments
 	// If a CSS file is included, add it to the call.
 	for _, arg := range os.Args {
-		if filepath.Ext(arg) == ".css" {
-			cssfilename = arg
+		ext := filepath.Ext(arg)
+		switch ext {
+			case ".css":
+				cssfile = arg
+			case ".md":
+				infile = arg
+			case ".html":
+				outfile = arg
 		}
 	}
 
-	if err := generateHTML(os.Args[1], os.Args[2], blackfriday.HTML_COMPLETE_PAGE, "Markdown!", cssfilename); err != nil {
+	// If no output file was specified, create one by stripping
+	// the filename extension of the input .md file and replace
+	// with html.
+	if outfile == "" {
+		outfile = strings.TrimSuffix(infile, filepath.Ext(infile)) +  ".html"
+	}
+
+	// Add support for most common extensions.j
+	extensions := 0
+	// If user specifies -toc=true, then add a table
+	// of contents to the beginning of the HTML output
+	// file, generated from headers.
+	if *toc {
+		extensions |= blackfriday.HTML_TOC
+	}
+	extensions |= blackfriday.HTML_COMPLETE_PAGE
+	extensions |= blackfriday.EXTENSION_NO_INTRA_EMPHASIS
+	extensions |= blackfriday.EXTENSION_TABLES
+	extensions |= blackfriday.EXTENSION_FENCED_CODE
+	extensions |= blackfriday.EXTENSION_AUTOLINK
+	extensions |= blackfriday.EXTENSION_STRIKETHROUGH
+	extensions |= blackfriday.EXTENSION_SPACE_HEADERS
+
+	if err := generateHTML(infile, outfile, extensions, "Markdown!", cssfile); err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err.Error())
 	}
 }
