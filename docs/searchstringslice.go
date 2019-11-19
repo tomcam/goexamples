@@ -1,4 +1,5 @@
-// Shows how to sort a string slice, then search it.
+// Shows how to sort a string slice in place, then search it.
+// My Go Playground for it is here: https://play.golang.org/p/yhmqfGgDvfE
 package main
 
 import (
