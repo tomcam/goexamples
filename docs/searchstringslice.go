@@ -44,7 +44,7 @@ var exclude = searchInfo{
 func main() {
 	searchFor := "backup"
 	fmt.Printf("%s in list? %v\n", searchFor, exclude.Found(searchFor))
-	searchFor = "public"
+	searchFor = "keepme"
 	fmt.Printf("%s in list? %v\n", searchFor, exclude.Found(searchFor))
 
 }
