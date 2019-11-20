@@ -1,5 +1,7 @@
-// Shows how to sort a string slice in place, then search it.
-// My Go Playground for it is here: https://play.golang.org/p/yhmqfGgDvfE
+/* Sorts a slice in place the first time it's searched by creating
+a compound data structure that holds the slice and a "sorted" flag. 
+https://play.golang.org/p/AA51s1_pbvc
+*/
 package main
 
 import (
@@ -7,36 +9,42 @@ import (
 	"sort"
 )
 
-var excludedDirs = []string{".git", "pub", ".backup"}
+/* Searching a sorted slice is fast.
+   This tracks whether the slice has been sorted
+   and sorts it on first search.
+*/
+type searchInfo struct {
+	list   []string
+	sorted bool
+}
 
-// sortStringSlice does just that if you pass it the address of a string slice.
-func sortStringSlice(s *[]string) {
-	sort.Slice(*s, func(i, j int) bool {
-		return (*s)[i] <= (*s)[j]
+func (s *searchInfo) Sort() {
+	sort.Slice(s.list, func(i, j int) bool {
+		s.sorted = true
+		return s.list[i] <= s.list[j]
 	})
 }
 
-// inSlice() returns true if the search term is found in a sorted slice.
-func inSlice(search string, s []string) bool {
-	pos := sort.Search(len(s), func(i int) bool {
-		return string(s[i]) >= search
+func (s *searchInfo) Found(searchFor string) bool {
+	if !s.sorted {
+		s.Sort()
+	}
+	var pos int
+	l := len(s.list)
+	pos = sort.Search(l, func(i int) bool {
+		return s.list[i] >= searchFor
 	})
+	return pos < l && s.list[pos] == searchFor
 
-	return s[pos] == search
 }
+
+var exclude = searchInfo{
+	list: []string{"node_modules", ".git", "test", "public", "backup"}, sorted: false}
+
 func main() {
-	searchFor := ".git"
-	sortStringSlice(&excludedDirs)
-	if inSlice(searchFor, excludedDirs) {
-		fmt.Printf("Found %s\n", searchFor)
-	} else {
-		fmt.Printf("Couldn't find %s\n", searchFor)
-	}
-	searchFor = "node_modules"
-	if inSlice(searchFor, excludedDirs) {
-		fmt.Printf("Found %s\n", searchFor)
-	} else {
-		fmt.Printf("Couldn't find %s\n", searchFor)
-	}
+	searchFor := "backup"
+	fmt.Printf("%s in list? %v\n", searchFor, exclude.Found(searchFor))
+	searchFor = "public"
+	fmt.Printf("%s in list? %v\n", searchFor, exclude.Found(searchFor))
 
 }
