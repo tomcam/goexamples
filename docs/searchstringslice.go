@@ -1,6 +1,6 @@
 /* Sorts a slice in place the first time it's searched by creating
 a compound data structure that holds the slice and a "sorted" flag. 
-https://play.golang.org/p/AA51s1_pbvc
+https://play.golang.org/p/a571mfn90E-
 */
 package main
 
