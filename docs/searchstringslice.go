@@ -1,5 +1,7 @@
 /* Sorts a slice in place the first time it's searched by creating
 a compound data structure that holds the slice and a "sorted" flag. 
+Useful when the list is created at runtime. Note that the sorted flag is 
+false by default.
 https://play.golang.org/p/a571mfn90E-
 */
 package main
