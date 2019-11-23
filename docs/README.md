@@ -1,5 +1,6 @@
 # Example programs in Go
 
+* [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go
 * [burntsushitest.go](burntsushitest.go) - Use burntsushi to read a TOML file
 * [blackfriday](blackfriday/) - Simple command line programs shoing how to use the Blackfriday parser convert Markdown in to HTML. cli2 also shows how to append file extensions and parse flags
