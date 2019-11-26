@@ -1,6 +1,6 @@
 package main
 // https://play.golang.org/p/wl2bNTILWWL
-// Identical to but with fewer comments
+// Identical to https://play.golang.org/p/xzlLy5-Pw2s but with fewer comments
 import (
 	"bytes"
 	"fmt"
