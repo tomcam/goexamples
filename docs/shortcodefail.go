@@ -1,7 +1,7 @@
 package main
 /* See the go playground version at https://play.golang.org/p/xzlLy5-Pw2s 
  * For a version with fewer comments see https://play.golang.org/p/wl2bNTILWWL
-/* Trying to get WordPress-like shortcodes working in my static site generator,
+ * Trying to get WordPress-like shortcodes working in my static site generator,
  * which, of course, converts Markdown to HTML. Since there are many things
  * Markdown doesn't understand, you can use Go template techniques.
  *
