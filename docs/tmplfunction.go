@@ -1,5 +1,5 @@
 package main
-/* tmplfunction.go shows how to add a custom function to a Go HTML template. */
+// Shows how to add a custom function to a Go HTML template. 
 import (
 	"bytes"
 	"os"
@@ -7,7 +7,6 @@ import (
 	"github.com/BurntSushi/toml"
 	"html/template"
 	"time"
-	"io/ioutil"
 )
 
 type SiteConfigs struct {
@@ -15,15 +14,6 @@ type SiteConfigs struct {
 }
 
 var funcs = template.FuncMap{"now": now }
-
-func shortcode(filename string) template.HTML {
-	// Return contents of an HTML file
-	input, err := ioutil.ReadFile(filename)
-	if err != nil {
-		return template.HTML("")
-	}
-	return template.HTML(string(input))
-}
 
 func now() string {
         return fmt.Sprintf("%v", time.Now())
@@ -63,4 +53,3 @@ func main() {
 		fmt.Printf("%v\n", b.String())
 	}
 }
-
