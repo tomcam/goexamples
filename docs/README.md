@@ -1,5 +1,6 @@
 # Example programs in Go
 
+* [cfgfile.go](cfgfile.go) - Store config in TOML file, then show its value in an HTML go HTML template
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go
 * [burntsushitest.go](burntsushitest.go) - Use burntsushi to read a TOML file
