@@ -1,6 +1,7 @@
 # Example programs in Go
 
-* [cfgfile.go](cfgfile.go) - Store config in TOML file, then show its value in an HTML go HTML template
+* [tmplfunction.go](tmplfunction.go) shows how to add a custom function to a Go HTML template. Followup to [cfgfile.go](cfgfile.go).
+* [cfgfile.go](cfgfile.go) - Store config in TOML file, then show its value in an HTML go HTML template. [tmplfunction.go](tmplfunction.go) builds on it by adding a custom function.
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go
 * [burntsushitest.go](burntsushitest.go) - Use burntsushi to read a TOML file
