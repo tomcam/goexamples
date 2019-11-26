@@ -1,5 +1,7 @@
 package main
 // Shows how to add a custom function to a Go HTML template. 
+// On the Go Playground:
+// https://play.golang.org/p/j2wmeGs0WoV
 import (
 	"bytes"
 	"os"
