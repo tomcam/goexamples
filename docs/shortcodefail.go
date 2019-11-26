@@ -1,21 +1,47 @@
 package main
+
+/* Trying to get WordPress-like shortcodes working in my static site generator,
+ * which, of course, converts Markdown to HTML. Since there are many things
+ * Markdown doesn't understand, you can use Go template techniques.
+ *
+ * For example, {{now}} is a demo custom template function that returns a
+ * string containing the current time and date.
+ *
+ * Usin gthe built-in Go template language, you can create variables
+ * at runtime like this: {{$h:="hello"}}  {{$h}}, world, which would of
+ * course return "hello, world".
+ *
+ * The shortcode custom templatel function I'm trying to implement here
+ * is intended to allow you to insert arbitrary HTML into the generated
+ * output, and to be able to inject parameters using Go template variables.
+ * In the example below, you'd be able to pass the ID of the YouTube video
+ * into the youtube.html file... if I could figure out how to parse
+ * these templates at runtime. The goal is to be able to do something like
+ * this to get a youtube player inserted into your HTML stream as it's
+ * compiling the markdown to HTML:
+ *
+ *   {{$v:="tcrTQUVkUe0"}}
+ *   Video ID is: {{$v}}
+ *   https://youtube.com/embed/{{$v}}
+ */
+
 /* Contents of youtube.html:
-<div>       
+<div>
 <iframe
 src="https://www.youtube.com/embed/{{$v}}"
-allowfullscreen>                       
-</iframe>                              
-</div>                                   
+allowfullscreen>
+</iframe>
+</div>
 */
 
 import (
 	"bytes"
-	"os"
 	"fmt"
 	"github.com/BurntSushi/toml"
 	"html/template"
-	"time"
 	"io/ioutil"
+	"os"
+	"time"
 )
 
 type SiteConfigs struct {
@@ -42,11 +68,12 @@ allowfullscreen>
 </iframe>                              
 </div>                                   
 `
-	// A template demonstrating that variables 
+	// A template demonstrating that variables
 	// can be assigned at runtime, and that
 	// custom template functions ("now") work
 	// properly.
-	tpl= `
+	tpl = `
+	{{$h:="hello"}}  {{$h}}, world.
 	{{$v:="tcrTQUVkUe0"}}
 
 	Video ID is: {{$v}}. 
@@ -64,7 +91,7 @@ allowfullscreen>
 	// Go playground, if no filename is
 	// supplied, it hardcodes the contents
 	// of an html file shown as the constant
-	// youtubeHTML. In real life this could be 
+	// youtubeHTML. In real life this could be
 	// any file, say a twitter.html that passes
 	// the tweet via a URL variable.
 	tpl2 = `
@@ -85,19 +112,17 @@ allowfullscreen>
 	data = Data{
 		Site: &siteConfig,
 	}
-
 )
 
-
 // List of custom functions this app knows about.
-var funcs = template.FuncMap{"now": now, "shortcode": shortcode }
+var funcs = template.FuncMap{"now": now, "shortcode": shortcode}
 
 // List of custom functions this app knows about except for
 // shortcode, because including it causes a cycle condition and
 // it won't compile. So when the shortcode function is evaluated
 // at runtime, it re-reads the same template but without
 // shortcode in the function map.
-var fewerFuncs = template.FuncMap{"now": now  }
+var fewerFuncs = template.FuncMap{"now": now}
 
 // Return contents of an HTML file,
 // but first parse it as a Golang template
@@ -125,11 +150,10 @@ func shortcode(filename string) template.HTML {
 	return template.HTML(string(input))
 }
 
-
 // Demo simply to prove that custom functions work
 // in templates.
 func now() string {
-        return fmt.Sprintf("%v", time.Now())
+	return fmt.Sprintf("%v", time.Now())
 }
 
 // Display any error message and exit to OS.
@@ -140,7 +164,6 @@ func quit(err error, code int) {
 	fmt.Fprintf(os.Stdout, "Quitting with error code %v\n", code)
 	os.Exit(code)
 }
-
 
 // Parse a template, then execute it against HTML/template source.
 // Return a string containing the result.
@@ -164,7 +187,7 @@ func main() {
 		quit(err, 1)
 	}
 
-	// Execute and display results from the first template, 
+	// Execute and display results from the first template,
 	// which doesn't use shortcode.
 	if s, err := execute("tpl", tpl, data, funcs); err != nil {
 		quit(err, 4)
@@ -172,11 +195,10 @@ func main() {
 		fmt.Println(s)
 	}
 
-
 	// Execute a similar template, but this one reads in a file
 	// using shortcode and tries to apply variables against it.
 	// This is done by reading in the exact same config info
-	// again, but shortcode runs a FuncMap that omits the 
+	// again, but shortcode runs a FuncMap that omits the
 	// shortcode function itself to avoid cycles.
 	if s, err := execute("tpl2", tpl2, data, funcs); err != nil {
 		quit(err, 4)
@@ -185,4 +207,3 @@ func main() {
 	}
 	return
 }
-
