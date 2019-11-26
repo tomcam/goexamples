@@ -1,5 +1,5 @@
 package main
-
+/* See the go playground version at https://play.golang.org/p/xzlLy5-Pw2s 
 /* Trying to get WordPress-like shortcodes working in my static site generator,
  * which, of course, converts Markdown to HTML. Since there are many things
  * Markdown doesn't understand, you can use Go template techniques.
@@ -21,8 +21,39 @@ package main
  * compiling the markdown to HTML:
  *
  *   {{$v:="tcrTQUVkUe0"}}
- *   Video ID is: {{$v}}
  *   https://youtube.com/embed/{{$v}}
+ *
+ * This demo runs 2 similar source files. The first shows the
+ * use of the {{now}} custom function and creation of a template
+ * variable at runtime. It executes properly with the expected output.
+ *
+ *	{{$v:="tcrTQUVkUe0"}}
+ *	Video ID is: {{$v}}.
+ *	Time is: {{now}}. Site Name is: {{.Site.Name}}
+ *
+ *  Result:
+ *
+ *      Video ID is: tcrTQUVkUe0.
+ *      Time is: Nov 26, 2019 3:01am. Site Name is: foo
+ *
+ *  The second demo source is:
+ *
+ *      {{$v:="tcrTQUVkUe0" }}Video ID is: {{$v}}.
+ *      Time is: {{now}}. Site Name is: {{.Site.Name}}
+ *      {{shortcode "" }}
+ *
+ * The the second demo runs a similar template that adds a call to
+ * shortcode, which accepts as its parameter a filename, which it opens,
+ * parses, and executes. Its job is to insert the content
+ * of an html file (or the youtubeHTML constant if not passed a
+ * filename). To do this I figure I have to reparse the the exact same
+ * source code so it can determine the value of variables and pass them
+ * through to the shortcode function, but it's not working.
+ * Remember that for this demo passing "" as the filename hardcodes
+ * it to insert the equivalent HTML file, shown above in the comments.
+ * The output on this one is simply:
+ *
+ *      test:4: undefined variable "$v"
  */
 
 /* Contents of youtube.html:
@@ -73,11 +104,7 @@ allowfullscreen>
 	// custom template functions ("now") work
 	// properly.
 	tpl = `
-	{{$h:="hello"}}  {{$h}}, world.
-	{{$v:="tcrTQUVkUe0"}}
-
-	Video ID is: {{$v}}. 
-
+	{{$v:="tcrTQUVkUe0" }}Video ID is: {{$v}}. 
 	Time is: {{now}}. Site Name is: {{.Site.Name}}
 	`
 	// A similar template file, but this one uses
@@ -95,13 +122,9 @@ allowfullscreen>
 	// any file, say a twitter.html that passes
 	// the tweet via a URL variable.
 	tpl2 = `
-	{{$v:="tcrTQUVkUe0"}}
-
-	{{shortcode "" }} 
-	
-	Video ID is: {{$v}}. 
-
+	{{$v:="tcrTQUVkUe0" }}Video ID is: {{$v}}. 
 	Time is: {{now}}. Site Name is: {{.Site.Name}}
+	{{shortcode "" }} 
 	`
 
 	// The compound data structure holding the site configuration
@@ -153,7 +176,8 @@ func shortcode(filename string) template.HTML {
 // Demo simply to prove that custom functions work
 // in templates.
 func now() string {
-	return fmt.Sprintf("%v", time.Now())
+	//Mon Jan 2 15:04
+	return fmt.Sprintf("%v", time.Now().Format("Jan 2, 2006 3:04pm"))
 }
 
 // Display any error message and exit to OS.
