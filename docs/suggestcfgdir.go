@@ -12,6 +12,10 @@ import (
 // of the directory that stores user configuration data. It does
 // so by sniffing the operating system. It returns the suggested
 // directory in the dir variable and the OS it detected in the os variable.
+// Go Playground:
+// https://play.golang.org/p/BeXM5iS66X3
+// Gist:
+// https://gist.github.com/tomcam/508f7a95a269b0d39781590ad47e6e75
 func suggestCfgDir() (dir, system string) {
 	system = runtime.GOOS
 	// Try to determine where user application home dir would be
