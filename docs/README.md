@@ -1,5 +1,6 @@
 # Example programs in Go
 
+* [suggestcfgdir.go](suggestcfgdir.go) sniffs the current operating system and makes an educated guess about where that system expects user configuration data to be stored
 * [flagbool.go](flagbool.go) Illustrates output of the simples possible command-line boolean flag
 * [tmplfunction.go](tmplfunction.go) shows how to add a custom function to a Go HTML template. Followup to [cfgfile.go](cfgfile.go).
 * [cfgfile.go](cfgfile.go) - Store config in TOML file, then show its value in an HTML go HTML template. [tmplfunction.go](tmplfunction.go) builds on it by adding a custom function.
