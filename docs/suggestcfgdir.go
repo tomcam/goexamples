@@ -8,7 +8,7 @@ import (
 	"runtime"
 )
 
-// suggestCfgDir() takes a stab at return the recommended location
+// suggestCfgDir() takes a stab at returning the recommended location
 // of the directory that stores user configuration data. It does
 // so by sniffing the operating system. It returns the suggested
 // directory in the dir variable and the OS it detected in the os variable.
