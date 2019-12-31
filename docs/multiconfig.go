@@ -75,24 +75,24 @@ type Config struct {
 func main() {
 	var cfg map[string]Config
 	var c Config
-  // Get operating system identifier as a string
+	// Get operating system identifier as a string
 	OS := runtime.GOOS
-  // Can test creating new entries by uncommenting this
-  // and assigning it different values
+	// Can test creating new entries by uncommenting this
+	// and assigning it different values
 	//OS = "foo"
 
-  // No config file at all, so create one.
+	// No config file at all, so create one.
 	if !fileExists(configFilename) {
 		fmt.Println("Creating", configFilename)
-    // Create the global config.
+		// Create the global config.
 		cfg = make(map[string]Config)
-    // This is the "subfile", which doesn't know what OS it's for.
+		// This is the "subfile", which doesn't know what OS it's for.
 		c.Features = make(map[string]string)
-    // Note current directory
+		// Note current directory
 		c.Features["home"] = currDir()
-    // Add an entry in the file for the current OS.
+		// Add an entry in the file for the current OS.
 		cfg[OS] = c
-    // Create the file using current config info.
+		// Create the file using current config info.
 		if err := writeMapFile(configFilename, &cfg); err != nil {
 			panic(err.Error())
 		}
@@ -102,23 +102,23 @@ func main() {
 	// Config file exists. Don't know if it has an
 	// entry for this OS.
 	var err error
-  // Read the existing file.
+	// Read the existing file.
 	if cfg, err = readMapFile(configFilename); err != nil {
 		panic(err.Error())
 	}
 	//fmt.Println("Contents of cfg:", cfg)
 	//fmt.Println("Contents of cfg[OS]:", cfg[OS])
 	_, ok := cfg[OS]
-  // Is there an entry fort his OS?
+	// Is there an entry fort his OS?
 	if !ok {
-    // No. Create one.
+		// No. Create one.
 		var f Config
-    // Have to allocate the submap.
+		// Have to allocate the submap.
 		f.Features = make(map[string]string)
 		f.Features["home"] = currDir()
-    // Then allocate the new one by assigning the old one.
+		// Then allocate the new one by assigning the old one.
 		cfg[OS] = f
-    // And save as a file.
+		// And save as a file.
 		if err := writeMapFile(configFilename, &cfg); err != nil {
 			panic(err.Error())
 		}
