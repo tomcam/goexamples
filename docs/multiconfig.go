@@ -106,10 +106,8 @@ func main() {
 	if cfg, err = readMapFile(configFilename); err != nil {
 		panic(err.Error())
 	}
-	//fmt.Println("Contents of cfg:", cfg)
-	//fmt.Println("Contents of cfg[OS]:", cfg[OS])
 	_, ok := cfg[OS]
-	// Is there an entry fort his OS?
+	// Is there an entry for this OS?
 	if !ok {
 		// No. Create one.
 		var f Config
