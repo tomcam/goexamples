@@ -1,5 +1,6 @@
 # Example programs in Go
 
+* [tomlgen.go](tomlgen.go) creates a general purpose TOML file that lets you define sections/kv pairs at will
 * [suggestcfgdir.go](suggestcfgdir.go) sniffs the current operating system and makes an educated guess about where that system expects user configuration data to be stored
 * [flagbool.go](flagbool.go) Illustrates output of the simples possible command-line boolean flag
 * [tmplfunction.go](tmplfunction.go) shows how to add a custom function to a Go HTML template. Followup to [cfgfile.go](cfgfile.go).
