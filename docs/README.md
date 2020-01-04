@@ -1,5 +1,6 @@
 # Example programs in Go
 
+* [tomlperplatform.go](tomlperplatform.go) creates a TOML config file that sniffs out the host OS so you can write values specific to it
 * [tomlgen.go](tomlgen.go) creates a general purpose TOML file that lets you define sections/kv pairs at will
 * [suggestcfgdir.go](suggestcfgdir.go) sniffs the current operating system and makes an educated guess about where that system expects user configuration data to be stored
 * [flagbool.go](flagbool.go) Illustrates output of the simples possible command-line boolean flag
