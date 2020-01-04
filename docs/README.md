@@ -15,4 +15,5 @@
 * [regexreplace.go](regexreplace.go) - Replaces a Go template identifier like {{.Name}} with an arbitrary string.
 
 ## Golang Playgrounds and Gists
+* General purpose TOML read/write using BurntSushi: https://play.golang.org/p/LgZwOT363sZ
 * Simple example of reading a TOML file using BurntSushi: https://play.golang.org/p/klLI41DiwqC
