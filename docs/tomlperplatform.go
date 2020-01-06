@@ -1,4 +1,8 @@
-/* Sniffs OS, then writes specific configuration file for that OS like this:
+/* Shows how to determine the OS at runtime and store OS-specific values
+   so that they can be retrieved at runtime and, for example, be used
+   to write platform-specific info in config filews that can nevertheless
+   be read and written to without having to set the OS manually.
+   Sniffs OS, then writes specific configuration file for that OS like this:
 
 [darwin]
   [darwin.PlatformSpecific]
@@ -101,6 +105,7 @@ func readMapFile(filename string, target interface{}) (err error) {
 
 func main() {
 	OS := runtime.GOOS
+	OS = "windows"
 	type Config struct {
 		PlatformSpecific map[string]string
 	}
@@ -134,5 +139,7 @@ func main() {
 	if err := readMapFile(appCfgFilename, &App); err != nil {
 		panic(err.Error())
 	}
-	fmt.Printf("Contents of %s:\n%+v\n", appCfgFilename, App)
+
+	fmt.Printf("Home dir on %s: %s\n",
+		OS, App[OS].PlatformSpecific["home"])
 }
