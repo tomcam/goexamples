@@ -17,7 +17,7 @@
 
   Uses the go-homedir package as an example of platform-specific config.
 
-  https://play.golang.org/p/Au91bMKPPFh
+  https://play.golang.org/p/FXrGXgrXABN
 */
 package main
 
