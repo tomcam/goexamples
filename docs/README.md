@@ -14,6 +14,7 @@
 * [cmdline](cmdline.go) shows how to parse the command line, with optional subcommands like "init" or "init sitename=test", and also how to retrieve those values later
 * [lastmodified.go](lastmodified.go) - Reusable code (and demo) showing how to retrieve the last modified date of a file by filename
 * [regexreplace.go](regexreplace.go) - Replaces a Go template identifier like {{.Name}} with an arbitrary string.
+* [Extracting HTML headers using go regexp](https://gist.github.com/tomcam/996e9e565fc8db4ca41484a369338993)
 
 ## Golang Playgrounds and Gists
 * General purpose TOML read/write using BurntSushi: https://play.golang.org/p/LgZwOT363sZ
