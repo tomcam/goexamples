@@ -6,6 +6,7 @@
 * [flagbool.go](flagbool.go) Illustrates output of the simples possible command-line boolean flag
 * [tmplfunction.go](tmplfunction.go) shows how to add a custom function to a Go HTML template. Followup to [cfgfile.go](cfgfile.go).
 * [cfgfile.go](cfgfile.go) - Store config in TOML file, then show its value in an HTML go HTML template. [tmplfunction.go](tmplfunction.go) builds on it by adding a custom function.
+* [g.go](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo. See also 
 * [goldmark1.go](goldmark1.go) Simplest example showing how to convert Markdown file to HTML using Goldmark
 * [goldmarkdemo.go](goldmarkdemo.go) Convert Markdown file to HTML using Goldmark, but with some unnecessary code
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
