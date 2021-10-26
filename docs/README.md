@@ -50,4 +50,5 @@ All of these example Go programs are complete. You can run most or all of them o
 * Simple example of reading a TOML file using BurntSushi (playground): https://play.golang.org/p/klLI41DiwqC
 
 ## YAML
+* [yamlreadwritestruct.go](yamlreadwritestruct.go), playground version [here](https://play.golang.org/p/YGt7fjWN9Rr)
 * [structtomap1.go](https://gist.github.com/tomcam/3a0002119d60435505bff426b9345ae7) (gist) Go/Golang, playground version [here](https://play.golang.org/p/t8XaP2eMPPE): Writes a struct to a YAML file, then reads it back from the YAML as a map using the gopkg.in/yaml package
