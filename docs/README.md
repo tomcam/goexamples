@@ -1,6 +1,6 @@
 # Example programs in Go
 
-* [structtomap1.go](https://gist.github.com/tomcam/3a0002119d60435505bff426b9345ae7) (gist) Go/Golang: writes a struct to a YAML file, then reads it back from the YAML as a map
+* [structtomap1.go](https://gist.github.com/tomcam/3a0002119d60435505bff426b9345ae7) (gist) Go/Golang: Go/Golang: writes a struct to a YAML file, then reads it back from the YAML as a map using the gopkg.in/yaml package
 * [embedlistdir.go](embedlistdir.go) creates an executable that embeds a directory, then displays the filenames in that directory at runtime
 * [tomlperplatform.go](tomlperplatform.go) creates a TOML config file that sniffs out the host OS so you can write values specific to it
 * [tomlgen.go](tomlgen.go) creates a general purpose TOML file that lets you define sections/kv pairs at will
