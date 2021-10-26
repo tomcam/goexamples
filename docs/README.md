@@ -32,6 +32,8 @@
 * [regexreplace.go](regexreplace.go) - Replaces a Go template identifier like {{.Name}} with an arbitrary string.
 * [Extracting HTML headers using go regexp](https://gist.github.com/tomcam/996e9e565fc8db4ca41484a369338993)
 
+## Slices
+* [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 
 ## Strings
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
@@ -49,5 +51,3 @@
 
 ## YAML
 * [structtomap1.go](https://gist.github.com/tomcam/3a0002119d60435505bff426b9345ae7) (gist) Go/Golang, playground version [here](https://play.golang.org/p/t8XaP2eMPPE): Writes a struct to a YAML file, then reads it back from the YAML as a map using the gopkg.in/yaml package
-
-  
