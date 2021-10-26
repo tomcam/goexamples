@@ -1,5 +1,7 @@
 # Example programs in Go
 
+All of these example Go programs are complete. You can run most or all of them on the Go Playground.
+
 ## Command-line flags/CLI
 * [flagbool.go](flagbool.go) Illustrates output of the simplest possible command-line boolean flag using the [flag](https://pkg.go.dev/flag) package
 * [cmdline](cmdline.go) shows how to parse the command line, with optional subcommands like "init" or "init sitename=test", and also how to retrieve those values later
