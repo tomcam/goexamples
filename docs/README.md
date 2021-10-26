@@ -1,7 +1,5 @@
 # Example programs in Go
 
-* [suggestcfgdir.go](suggestcfgdir.go) sniffs the current operating system and makes an educated guess about where that system expects user configuration data to be stored
-
 ## Command-line flags/CLI
 * [flagbool.go](flagbool.go) Illustrates output of the simplest possible command-line boolean flag using the [flag](https://pkg.go.dev/flag) package
 * [cmdline](cmdline.go) shows how to parse the command line, with optional subcommands like "init" or "init sitename=test", and also how to retrieve those values later
