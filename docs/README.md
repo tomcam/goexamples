@@ -18,10 +18,8 @@ All of these example Go programs are complete. You can run most or all of them o
 
 ## Reflection/runtime type identification
 * [fieldisstringtype.go](fieldisstringtype.go) determines at runtime whether the struct passed in the argument has a field named in the second argument of type string [https://play.golang.org/p/yAEXeeCvJMH](playground version)
-* 
-
-
-
+* [structinfo.go](structinfo.go): `structInfo()` takes any struct at runtime and displays its type name, field names and types, 
+and contents of each field. `structHasField()` returns true if a struct passed to it at runtime contains a field name passed as a string. Playground version at https://play.golang.org/p/zeOTNfHEQlH
 
 ## JSON
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go. See also [jconstruct on Go playground](https://play.golang.org/p/S7HbAOk0ZDb)
