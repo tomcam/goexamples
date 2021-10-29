@@ -16,6 +16,12 @@ All of these example Go programs are complete. You can run most or all of them o
 ## File handling
 * [lastmodified.go](lastmodified.go) - Reusable code (and demo) showing how to retrieve the last modified date of a file by filename
 
+## Reflection/runtime type identification
+* [fieldisstringtype.go](fieldisstringtype.go) determines at runtime whether the struct passed in the argument has a field named in the second argument of type string [https://play.golang.org/p/yAEXeeCvJMH](playground version)
+* 
+
+
+
 
 ## JSON
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go. See also [jconstruct on Go playground](https://play.golang.org/p/S7HbAOk0ZDb)
