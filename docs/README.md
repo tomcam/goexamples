@@ -18,6 +18,9 @@ All of these example Go programs are complete. You can run most or all of them o
 
 ## Reflection/runtime type identification
 * [fieldisstringtype.go](fieldisstringtype.go) determines at runtime whether the struct passed in the argument has a field named in the second argument of type string. Playground version at https://play.golang.org/p/yAEXeeCvJMH
+* [structfieldbynamestrmust.go](structfieldbynamestrmust.go) takes any struct and field name (as a string) at runtime and
+returns the string value of that field. It returns an empty string if the 
+object passed in isn't a struct, or if the named field isn't a struct. Playground version at https://play.golang.org/p/MiCn6NtEp5-
 * [structinfo.go](structinfo.go): `structInfo()` takes any struct at runtime and displays its type name, field names and types, 
 and contents of each field. `structHasField()` returns true if a struct passed to it at runtime contains a field name passed as a string. Playground version at https://play.golang.org/p/zeOTNfHEQlH
 
