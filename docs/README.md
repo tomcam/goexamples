@@ -34,6 +34,7 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 * [goldmarkdemo.go](goldmarkdemo.go) Convert Markdown file to HTML using Goldmark, but with some unnecessary code
 * [burntsushitest.go](burntsushitest.go) - Use burntsushi to read a TOML file
 * [blackfriday](blackfriday/) - Simple command line programs shoing how to use the Blackfriday parser convert Markdown in to HTML. cli2 also shows how to append file extensions and parse flags
+* [g.go](https://gist.github.com/tomcam/063430a32e40979736cf78bf172c42d9) goldmark converter using an App object
 
 ## Regex
 * [regexreplace.go](regexreplace.go) - Replaces a Go template identifier like {{.Name}} with an arbitrary string.
