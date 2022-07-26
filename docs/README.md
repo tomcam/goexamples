@@ -28,14 +28,15 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 * [jsonstruct.go](jsonstruct.go) - Initialize nested struct in Golang. Read and write nested structs to a JSON file in Go. See also [jconstruct on Go playground](https://play.golang.org/p/S7HbAOk0ZDb)
 
 
-## Markdown
-* [g.go](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo. See also 
+## Markdown: Goldmark
+* [Gist with simplest Goldmark demo](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo.)
+* [goldmark converter using an App object.](https://gist.github.com/tomcam/063430a32e40979736cf78bf172c42d9)  See [playground version](https://go.dev/play/p/5UpB0Z5L_EZ) or https://go.dev/play/p/XNsZD6bqIXJ
+* [Goldmark demo with App object Markdown to HTML conversion, code highlighting, YAML support, simple template support](https://gist.github.com/tomcam/a1c8fbe27a335164add3bc2b1d92b204), playground version [here](https://go.dev/play/p/Xu1ELDgl4ec)
 * [goldmark1.go](goldmark1.go) Simplest example showing how to convert Markdown file to HTML using Goldmark
-* [goldmarkdemo.go](goldmarkdemo.go) Convert Markdown file to HTML using Goldmark, but with some unnecessary code
+
+## Markdown: BurntSushi and BlackFriday (out od date)
 * [burntsushitest.go](burntsushitest.go) - Use burntsushi to read a TOML file
 * [blackfriday](blackfriday/) - Simple command line programs shoing how to use the Blackfriday parser convert Markdown in to HTML. cli2 also shows how to append file extensions and parse flags
-* [g.go](https://gist.github.com/tomcam/063430a32e40979736cf78bf172c42d9) goldmark converter using an App object. See [playground version](https://go.dev/play/p/5UpB0Z5L_EZ)
-* [Goldmark demo with App object Markdown to HTML conversion, code highlighting, YAML support, simple template support](https://gist.github.com/tomcam/a1c8fbe27a335164add3bc2b1d92b204), [playground version](https://go.dev/play/p/cFPKZBpYwwg)
 
 ## Regex
 * [regexreplace.go](regexreplace.go) - Replaces a Go template identifier like {{.Name}} with an arbitrary string.
