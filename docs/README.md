@@ -50,6 +50,7 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 
 ## Templates
 * [tmplfunction.go](tmplfunction.go) shows how to add a custom function to a Go HTML template. Followup to [cfgfile.go](cfgfile.go).
+* funcmap1.go[funcmap1.go] Shows how to add multiple custom template functions (Playground version [here](https://go.dev/play/p/BqkWiQ2v7Tj)
 
 
 ## TOML
