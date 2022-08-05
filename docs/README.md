@@ -33,7 +33,7 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 * [Gist with simplest Goldmark demo](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo.)
 * [goldmark converter using an App object.](https://gist.github.com/tomcam/063430a32e40979736cf78bf172c42d9)  See [playground version](https://go.dev/play/p/5UpB0Z5L_EZ) or https://go.dev/play/p/XNsZD6bqIXJ
 * [Goldmark demo with with App object, Markdown to HTML conversion, code highlighting, YAML front matter support, and template support with custom template functions](mdcodeyamltemplate.go), gist [here](https://gist.github.com/tomcam/70dd62c9fa36032506fc406db9b89062), go Playground version [here](https://go.dev/play/p/4c5PPHFG85C)
-* [md2html](md2html.go) Smallest general-purpose micro CMS that converts a Markdown to a raw HTML file with head, etc.
+* [md2rawhtml](md2rawhtml.go.go) Smallest general-purpose micro CMS that converts a Markdown to a raw HTML file with no head, html tags, etc.
 * [Goldmark demo with App object Markdown to HTML conversion, code highlighting, YAML support, simple template support](https://gist.github.com/tomcam/a1c8fbe27a335164add3bc2b1d92b204), playground version [here](https://go.dev/play/p/Xu1ELDgl4ec)
 * [goldmark1.go](goldmark1.go) Simplest example showing how to convert Markdown file to HTML using Goldmark
 
