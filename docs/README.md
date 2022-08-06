@@ -31,7 +31,7 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 ## Markdown: Goldmark
 * [md2htmltemplates.go](md2htmltemplates.go) Demonstrates using progressive, self-contained functions the goldmark Markdown to HTML converter using an App object, code highlighting. extracting YAML front matter, executing a template to interpolate front matter metadata with its evaluated result, and adding a custom template function. [Go Playground](https://go.dev/play/p/PQ6AxAb09kx) version, [Gist](https://gist.github.com/tomcam/9bc1d8637eb2e8ee59b0f7d2674efb7c)
 * [Gist with simplest Goldmark demo](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo.)
-* [microcms](microcms.go) A one-file Markdown to HTML converter
+* [microcms](microcmsnoyaml.go) A one-file Markdown to HTML converter. No front matter support.
 * [goldmark converter using an App object.](https://gist.github.com/tomcam/063430a32e40979736cf78bf172c42d9)  See [playground version](https://go.dev/play/p/5UpB0Z5L_EZ) or https://go.dev/play/p/XNsZD6bqIXJ
 * [Goldmark demo with with App object, Markdown to HTML conversion, code highlighting, YAML front matter support, and template support with custom template functions](mdcodeyamltemplate.go), gist [here](https://gist.github.com/tomcam/70dd62c9fa36032506fc406db9b89062), go Playground version [here](https://go.dev/play/p/4c5PPHFG85C)
 * [md2rawhtml](md2rawhtml.go.go) Smallest general-purpose micro CMS that converts a Markdown to a raw HTML file with no head, html tags, etc.
