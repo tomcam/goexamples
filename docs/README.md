@@ -7,6 +7,7 @@ All of these example Go programs are complete. You can run most or all of them o
 * [cmdline](cmdline.go) shows how to parse the command line, with optional subcommands like "init" or "init sitename=test", and also how to retrieve those values later
 
 ## Directory tree
+* [dl.go](dl.go) - dl lists all directories in the specified path (defaults to current directory)
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 * [lastmodified.go](lastmodified.go) - Reusable code (and demo) showing how to retrieve the last modified date of a file by filename
 
