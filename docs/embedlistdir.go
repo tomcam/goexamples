@@ -1,52 +1,52 @@
-// Shows how to embed a subdirectory of the package
-// named .config into the executable at compile time, then get
-// access to its contents at runtime.
-
+// Thanks to Cerise Limon (https://stackoverflow.com/questions/75251998/failing-to-understand-go-embed#75252129)
+// for the essential fix: https://stackoverflow.com/questions/75251998/failing-to-understand-go-embed#75252129
 package main
+
 import (
 	"embed"
-	"io/fs"
 	"fmt"
- 	"io/ioutil"
- 	"os"
+	"io/fs"
+	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
-
-// The following embeds all files and subdirectories
-// from the themes subdirectory of this package into
-// the executable. Can change directory name from .config to anything else.
+// A populated subdirectory directory named .config is required
 //go:embed all:.config
 var configFiles embed.FS
 
-// embedListDir() displays the filenames in the embedded 
-// directory passed to the files parameter.
-func embedListDir(files embed.FS) error {
-	fs.WalkDir(files, ".", func(path string, d fs.DirEntry, err error) error {
+func main() {
+	ls(configFiles, ".")
+}
+
+func ls(files embed.FS, dir string) error {
+	fs.WalkDir(files, dir, func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		print(path)
+		if !d.IsDir() {
+			show(files, path) // Display contents of file
+			filename := filepath.Join(path, d.Name())
+			fmt.Println(filename)
+		}
 		return nil
 	})
 	return nil
 }
 
-// Open file name and send its contents to stdout.
-func print(filename string) {
-  f, err := os.Open(filename); 
-  if err != nil {
-    fmt.Println("Error opening %s: %v", filename, err.Error())
-    os.Exit(1)
-  }
-  bytes, err := ioutil.ReadAll(f); 
-  if err != nil {
-    fmt.Println("Error reading %s: %v", filename, err.Error())
-  } else {
-    fmt.Println(string(bytes))
-    os.Exit(1)
-  }
+func show(files embed.FS, filename string) {
+	f, err := files.Open(filename)
+	if err != nil {
+		quit(filename, err)
+	}
+	bytes, err := ioutil.ReadAll(f)
+	if err != nil {
+		quit(filename, err)
+	}
+	fmt.Println(string(bytes))
 }
 
-func main() {
-	embedListDir(configFiles)
+func quit(filename string, err error) {
+	fmt.Printf("Error for file %s: %v\n", filename, err.Error())
+	os.Exit(1)
 }
