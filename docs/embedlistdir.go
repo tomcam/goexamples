@@ -1,4 +1,4 @@
-// Thanks to Cerise Limon (https://stackoverflow.com/questions/75251998/failing-to-understand-go-embed#75252129)
+// Thanks to Cerise Limón (https://stackoverflow.com/users/5728991/cerise-limón)
 // for the essential fix: https://stackoverflow.com/questions/75251998/failing-to-understand-go-embed#75252129
 package main
 
