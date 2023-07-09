@@ -10,6 +10,7 @@ All of these example Go programs are complete. You can run most or all of them o
 * [dl.go](dl.go) - dl lists all directories in the specified path (defaults to current directory). Gist at https://gist.github.com/tomcam/db640cfc7b846e083f4f7dec19cf345d
 * [dirtree.go](dirtree.go) - Show directory tree as string slice. Allow files & dirs to be excluded
 * [lastmodified.go](lastmodified.go) - Reusable code (and demo) showing how to retrieve the last modified date of a file by filename
+* [genfiletree.go](genfiletree.co) - Generate small tree of text files, e.g. for a website. Gist at https://gist.github.com/tomcam/9766ca1ea4d63eff804335c5f391ab09
 
 ## embed (embedding data in a Go executable)
 * [embedlistdir.go](embedlistdir.go) creates an executable that embeds a directory, then displays the filenames in that directory at runtime
