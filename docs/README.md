@@ -12,7 +12,7 @@ All of these example Go programs are complete. You can run most or all of them o
 * [lastmodified.go](lastmodified.go) - Reusable code (and demo) showing how to retrieve the last modified date of a file by filename
 * [genfiletree.go](genfiletree.go) - Generate small tree of text files, e.g. for a website. Gist at https://gist.github.com/tomcam/9766ca1ea4d63eff804335c5f391ab09
 * [filewatch1.go](filewatch1.go) - Short demo of radovskyb's recursive file watching package. Gist at https://gist.github.com/tomcam/32760a5049a00ec6ba82bcb42b6759fc
-* [filewatch2.go](filewatch1.go) - Short demo of radovskyb's recursive file watching package with different
+* [filewatch2.go](filewatch2.go) - Short demo of radovskyb's recursive file watching package with different
 order of execution. Gist at [https://gist.github.com/tomcam/32760a5049a00ec6ba82bcb42b6759fc](https://gist.github.com/tomcam/97c75f7706d4763732018a3429a020d3)
 
 ## embed (embedding data in a Go executable)
