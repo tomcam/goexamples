@@ -1,5 +1,4 @@
 // md3.go Parse YAML front matter. Convert Markdown to HTML. Add custom function.
-// Go playground: https://go.dev/play/p/QZAsVHfz4j9
 package main
 
 import (
@@ -30,22 +29,20 @@ Month: {{ ftime "Jan" }}
 Default time format: {{ ftime }}
 `
 
-
 func ftime(param ...string) string {
-    	var ref = "Mon Jan 2 15:04:05 -0700 MST 2006"
-    	var format string
-    	if len(param) < 1 {
-    		format = ref
-    	} else {
-    		format = param[0]
-    	}
-    	t := time.Now()
-    	return t.Format(format)
-    }
+	var ref = "Mon Jan 2 15:04:05 -0700 MST 2006"
+	var format string
+	if len(param) < 1 {
+		format = ref
+	} else {
+		format = param[0]
+	}
+	t := time.Now()
+	return t.Format(format)
+}
 
 func main() {
 	var CustomFuncs template.FuncMap
-	// All built-in functions must appear here to be publicly available
 	CustomFuncs = template.FuncMap{
 		"ftime": ftime,
 	}
@@ -60,11 +57,10 @@ func main() {
 	document := mdParser.Parser().Parse(text.NewReader([]byte(source)))
 	metaData := document.OwnerDocument().Meta()
 	var buf bytes.Buffer
-  t := template.Must(template.New("").Funcs(CustomFuncs).Parse(source))
-  if err := t.Execute(&buf, ""); err != nil {
-    log.Fatal(err)
-  }
-
+	t := template.Must(template.New("").Funcs(CustomFuncs).Parse(source))
+	if err := t.Execute(&buf, ""); err != nil {
+		log.Fatal(err)
+	}
 
 	fmt.Printf("HTML:\n%v\n", buf.String())
 	fmt.Printf("YAML front matter: %v\n", metaData)
