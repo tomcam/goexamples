@@ -1,4 +1,5 @@
 // md3.go Parse YAML front matter. Convert Markdown to HTML. Add custom function.
+// Go playground: https://go.dev/play/p/QZAsVHfz4j9
 package main
 
 import (
