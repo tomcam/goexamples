@@ -36,6 +36,7 @@ and contents of each field. `structHasField()` returns true if a struct passed t
 
 ## Markdown: Goldmark
 * [md1.go: Minimal Goldmark to convert from Markdown to HTML](md1.go) [Go playground](https://go.dev/play/p/5BhsP-osFKs), [gist](https://go.dev/play/p/5BhsP-osFKs)
+* [md2.go][Go Playgrund)(https://go.dev/play/p/CKm5Ik-Ti0V)
 * [md2htmltemplates.go](md2htmltemplates.go) Demonstrates using progressive, self-contained functions the goldmark Markdown to HTML converter using an App object, code highlighting. extracting YAML front matter, executing a template to interpolate front matter metadata with its evaluated result, and adding a custom template function. [Go Playground](https://go.dev/play/p/PQ6AxAb09kx) version, [Gist](https://gist.github.com/tomcam/9bc1d8637eb2e8ee59b0f7d2674efb7c)
 * [Gist with simplest Goldmark demo](https://gist.github.com/tomcam/942342f301c78a20457c0b2e752bbb2b) Gist with simplest Goldmark demo.)
 * [microcms](microcmsnoyaml.go) A one-file Markdown to HTML converter. No front matter support.
